@@ -1,0 +1,29 @@
+
+{% if course.pk is 1 %}
+<h1> <a href="https://www.edureka.co/data-science-python-certification-course">{{ course.courseName }}</a> </h1>
+<h2>{{ course.instrucName }}</h2>
+    <ul>
+    {% for i in AllCourses.set.all %}
+        <li> {{ i.ct }}</li>
+    {% endfor %}
+    </ul>
+{% elif course.pk is 2 %}
+<h1> <a href="https://www.edureka.co/java-j2ee-training-course">{{ course.courseName }}</a> </h1>
+<h2>{{ course.instrucName }}</h2>
+{% elif course.pk is 3 %}
+ <h1> <a href="https://www.edureka.co/java-j2ee-training-course">{{ course.courseName }}</a> </h1>
+<h2>{{ course.instrucName }}</h2>
+{% endif %}
+
+{%  if error_message %}
+    <p> <strong> {{ error_message }}</strong></p>
+{% endif %}
+<form action="{% url 'App1:yourchoice' course.id %}" method="post">
+    {% csrf_token %}
+    {% for choice in course.details_set.all %}
+        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+        <label for="choice{{ forloop.counter }}"> {{ choice.ct }} </label>
+        <br>
+    {% endfor %}
+    <input type="submit" value="submit">
+</form>
