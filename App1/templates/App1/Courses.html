@@ -9,7 +9,6 @@
     .link:hover{
         background:lightblue;
     }
-
 </style>
 </head>
 <body>
@@ -24,19 +23,29 @@
         <a class="nav-link active link" aria-current="page" href="#">Home</a>
          <a class="nav-link link", href="#">Nel Community</a>
         <a class="nav-link align-middle link" href="#">Contact</a>
+            {% if user.is_authenticated %}
+                <a class="nav-link align-middle link" href="/logout/">Logout</a>
+            {% else %}
+               <a class="nav-link align-middle link" href="/login/">Login</a>
+            {% endif %}
+
 {#        <a class="nav-link disabled">Disabled</a>#}
       </div>
     </div>
   </div>
 </nav>
 <h1>WELCOME TO NEL!</h1>
-<img src="https://scontent-bos3-1.xx.fbcdn.net/v/t39.30808-6/270945569_4572729072844927_4815530628206236858_n.png?_nc_cat=107&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=dzqxBL0q9nsAX_9-aAe&_nc_ht=scontent-bos3-1.xx&oh=00_AT_LLpouGe2W6jOtfzD9Mx_KOodpfxeeWtZwJDjlRm78PQ&oe=61DA9894" width="200" height="200">
+<img src="https://static.vecteezy.com/system/resources/thumbnails/000/682/588/small/cool-black-panther-with-sunglasses-and-necklace.jpg" width="200" height="200">
 <ol>
-    {% for i in ac %}
-        <li>
-            <a href="{{ i.pk }}/">{{ i.courseName }}</a>
-        </li>
-    {% endfor %}
+    {% if user.is_authenticated %}
+        {% for i in ac %}
+            <li>
+                <a href="{{ i.pk }}/">{{ i.courseName }}</a>
+            </li>
+        {% endfor %}
+    {% else %}
+       <p><a href="/login">Login to see the list of courses</a></p>
+    {% endif %}
 </ol>
 
 </body>
