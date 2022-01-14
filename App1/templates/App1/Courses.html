@@ -21,7 +21,7 @@
     <div class="collapse navbar-collapse mx-auto " id="navbarNavAltMarkup">
       <div class="navbar-nav  match-parent nav-fill ">
         <a class="nav-link active link" aria-current="page" href="#">Home</a>
-         <a class="nav-link link", href="#">Nel Community</a>
+         <a class="nav-link link", href="#">Nel's Community</a>
         <a class="nav-link align-middle link" href="#">Contact</a>
             {% if user.is_authenticated %}
                 <a class="nav-link align-middle link" href="/logout/">Logout</a>
@@ -34,7 +34,11 @@
     </div>
   </div>
 </nav>
-<h1>WELCOME TO NEL!</h1>
+{% if user.is_authenticated %}
+    <h1>WELCOME {{ user.get_username }}</h1>
+{% else %}
+    <h1>WELCOME</h1>
+{% endif %}
 <img src="https://static.vecteezy.com/system/resources/thumbnails/000/682/588/small/cool-black-panther-with-sunglasses-and-necklace.jpg" width="200" height="200">
 <ol>
     {% if user.is_authenticated %}

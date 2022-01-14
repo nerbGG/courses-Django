@@ -24,5 +24,5 @@ urlpatterns = [
     path('', include(('usersapp.urls', 'usersapp'), namespace='usersapp')),
     path('', include('App1.urls')),
     #has /login path and has a view that renders registration/login.html for the html (need to create registration/login.html locally)
-    path('', include("django.contrib.auth.urls")),
+    #path('', include("django.contrib.auth.urls")),
 ]
