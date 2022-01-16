@@ -1,10 +1,12 @@
 import datetime
 from django.utils import timezone
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # has the names of the courses and the names of the instructors
 class AllCourses(models.Model):
+    user = models.ManyToManyField(User)
     courseName = models.CharField(max_length=200)
     instrucName = models.CharField(max_length=100)
     startedFrom = models.DateTimeField('Started from')

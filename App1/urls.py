@@ -6,5 +6,6 @@ app_name = 'App1'
 urlpatterns = [
     path('', views.Courses, name='home-page'),
     path('<int:course_id>/', views.detail, name='detail'),
+    path('remove/', views.removecourse,name='removecourse'),
     path('<int:course_id>/yourchoice/', views.yourchoice, name='yourchoice'),
 ]
