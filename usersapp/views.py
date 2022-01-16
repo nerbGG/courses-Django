@@ -23,6 +23,8 @@ from django.contrib.auth.models import User
 # return render(response, "usersapp/register.html", {"form": form})
 
 def register(response):
+    # can access the current user here
+    # response.user
     if response.method == "POST":
        return createuser(response)
     else:
@@ -37,7 +39,7 @@ def createuser(response):
     password = response.POST['password']
     try:
         user = User.objects.create_user(username=username, first_name=firstname, last_name=lastname, email=email,
-                                        password=password)
+                                       password=password)
         user.save()
     except Exception:
         return render(response, "usersapp/register.html", {"useralreadyexists": True})
