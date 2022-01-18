@@ -16,13 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 # will access userapp views directly instead of creating a url file in userapp and including it here
-from usersapp import views as v
-
+# from usersapp import views as v
 # routes
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('usersapp.urls', 'usersapp'), namespace='usersapp')),
     path('', include('App1.urls')),
-    #has /login path and has a view that renders registration/login.html for the html (need to create registration/login.html locally)
-    #path('', include("django.contrib.auth.urls")),
+    # has /login path and has a view that renders registration/login.html for the html (need to create registration/login.html locally)
+    # path('', include("django.contrib.auth.urls")),
+
 ]
